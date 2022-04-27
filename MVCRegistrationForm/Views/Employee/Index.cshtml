@@ -1,0 +1,95 @@
+﻿@model IEnumerable<MVCRegistrationForm.Models.Employee>
+
+@{
+    ViewBag.Title = "Employees List";
+}
+
+<div style="font-family:Arial">
+    <h2>Employees List</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table" border="1" style="border-color:brown">
+        <tr style="background-color:sandybrown;font-weight:bold">
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Surname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConfirmPassword)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Country)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FavouriteColour)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Birthday)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CellPhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comments)
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+
+            using (Html.BeginForm("Delete", "Employee", new { id = item.ID }))
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Surname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Password)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ConfirmPassword)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Country)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FavouriteColour)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Birthday)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CellPhoneNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Comments)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                        <input type="submit" value="Delete" 
+                               onclick="return confirm('Are sure you want to delete record with ID = @item.ID')" />
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+</div>
